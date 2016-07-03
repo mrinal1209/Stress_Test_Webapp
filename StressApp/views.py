@@ -18,22 +18,28 @@ def start_survey(request):
     return render(request, 'StressApp/secondpage.html', context)
 
 
-# return all questions from database in json format
 def get_all_questions(request):
-    que_obj = Question.objects.all()  # Fetch all questions from database
-    questions = [que.get_as_dict() for que in que_obj]
-
-    return HttpResponse(
-                json.dumps(questions),
-                content_type='application/json'
-    )
+    return get_all_objects_in_json(request, Question)
 
 
 def get_all_options(request):
-    opt_obj = Option.objects.all()  # Fetch all questions from database
-    options = [opt.get_as_dict() for opt in opt_obj]
+    return get_all_objects_in_json(request, Option)
+
+
+def get_all_objects_in_json(request, model):
+    """
+    This View Abstract Common Functionality Of Returning
+    All Objects Of A Model In JSON Format.
+
+    :param request: takes a request
+    :param model:   anything that inherits Model class
+    :return:        return all objects in json format
+    """
+    obj = model.objects.all()  # Fetch all objects
+    json_obj = [i.get_as_dict() for i in obj]
 
     return HttpResponse(
-                json.dumps(options),
-                content_type='application/json'
+        json.dumps(json_obj),
+        content_type='application/json'
     )
+
