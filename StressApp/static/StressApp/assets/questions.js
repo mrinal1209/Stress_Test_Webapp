@@ -116,8 +116,9 @@
 					i = questions.length-1;
 				if(i > 0){
 					i--;
-                    alert(questions[i].userAnswer+"_radio");
-					getElement(questions[i].userAnswer+"_radio").checked = true;
+                    var rdb = "1_radio";
+                    alert(rdb);
+					getElement(rdb).checked = true;
 					document.getElementById('ques').innerHTML=questions[i].questiontext;
 				}
 				else{
