@@ -1,0 +1,669 @@
+{% load staticfiles %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+		<meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+        
+<title>Stress management</title>
+   
+     <link rel="stylesheet" href="{% static 'StressApp/assets/bootstrap/css/bootstrap.min.css' %}">
+    
+    <link rel="stylesheet" href="{% static 'StressApp/assets/font-awesome/css/font-awesome.min.css"' %}>
+	
+
+   
+
+      
+     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{% static 'StressApp/assets/ico/apple-touch-icon-144-precomposed.png' %}">
+    
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{% static 'StressApp/assets/ico/apple-touch-icon-114-precomposed.png' %}">
+   
+     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{% static 'StressApp/assets/ico/apple-touch-icon-72-precomposed.png' %}">
+   
+     <link rel="apple-touch-icon-precomposed" href="{% static 'StressApp/assets/ico/apple-touch-icon-57-precomposed.png' %}">
+    <link href="{% static 'StressApp/assets/jquery-pie-loader.css' %}" rel="stylesheet" type="text/css">
+      
+    <script src="{% static 'StressApp/assets/js/jquery-1.11.1.min.js' %}"></script>
+    
+    <script src="{% static 'StressApp/assets/bootstrap/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'StressApp/assets/jquery-pie-loader.js' %}"></script>
+	<script src="{% static 'StressApp/assets/questions.js' %}"></script>
+
+    <style>
+		
+    #header
+	{
+	background-color:rgba(0,0,0,0.4);
+	border:2px solid #000000;
+	border-radius:5px;
+	}
+	body
+	{
+		background: url({% static 'StressApp/img/grain_wood_background_hd_picture_4_169627.jpg' %}) no-repeat center center fixed;
+        background-size: cover;
+	    color:#fff;
+  	    background-color:red;
+	}
+	a:hover
+	{
+		text-decoration:none;
+	}
+	#t
+	{
+		background:rgba(0,0,0,0.5);
+		height:auto;
+		font-size:;
+		border:2px solid #000000;
+		border-radius:10px;
+	}
+	hr
+	{
+		color:#FFF;
+		height:30px;
+	}
+	#ques
+	{
+		color:rgba(255,255,255,1);
+		font-weight:bold;
+		font-family:'Comic Sans MS', cursive;
+			}
+	#btnNext
+	{
+		background-color:rgba(0,0,0,0.6);
+		border:hidden;
+		font-family:'Comic Sans MS', cursive;
+	}
+	#btnNext:hover
+	{
+		background:rgba(153,51,0,1);
+	}
+	#btnPrev
+	{
+		background-color:rgba(0,0,0,0.6);
+			border:hidden;
+			font-family:'Comic Sans MS', cursive;
+	}
+	#btnPrev:hover
+	{
+		background:rrgba(153,51,0,1);
+	}
+	#btnResult
+	{
+		background-color:rgba(0,0,0,0.6);
+			border:hidden;font-family:'Comic Sans MS', cursive;
+	}
+	#btnResult:hover
+	{
+		background:rgba(0,255,0,1);
+	}
+	label.btn span {
+  font-size: 1.5em ;
+  font-family:'Comic Sans MS', cursive;
+}
+
+
+label input[type="radio"] ~ i.fa.fa-check-circle-o{
+    display: none;
+}
+label input[type="radio"]:checked ~ i.fa.fa-circle-o{
+    display: none;
+}
+label input[type="radio"]:checked ~ i.fa.fa-check-circle-o{
+    color:rgba(0,102,153,1);    display: inline;
+}
+label:hover input[type="radio"] ~ i.fa {
+color: rgba(0,102,153,1);
+}
+
+label input[type="checkbox"] ~ i.fa.fa-square-o{
+    color: #c8c8c8;    display: inline;
+}
+label input[type="checkbox"] ~ i.fa.fa-check-square-o{
+    display: none;
+}
+label input[type="checkbox"]:checked ~ i.fa.fa-square-o{
+    display: none;
+}
+label input[type="checkbox"]:checked ~ i.fa.fa-check-square-o{
+    color: #7AA3CC;    display: inline;
+}
+label:hover input[type="checkbox"] ~ i.fa {
+color: #7AA3CC;
+}
+
+div[data-toggle="buttons"] label.active{
+    color: rgba(0,102,153,1);
+}
+#b
+  {
+	  background:rgba(51,51,51,0.4);
+	  height:40px;
+	  font-size:20px;
+	  font-family:'Comic Sans MS', cursive;
+	  font-weight:bold;
+	  border-radius:10px;
+	  color:#FFF;
+	  border:none;
+	  border:2px solid #000000;
+		
+  }
+div[data-toggle="buttons"] label {
+display: inline-block;
+padding: 6px 12px;
+margin-bottom: 0;
+font-size: 14px;
+font-weight: normal;
+line-height: 2em;
+text-align: left;
+white-space: nowrap;
+vertical-align: top;
+cursor: pointer;
+background-color: none;
+border: 0px solid 
+#c8c8c8;
+border-radius: 3px;
+color: #c8c8c8;
+color:#FFF;
+-webkit-user-select: none;
+-moz-user-select: none;
+-ms-user-select: none;
+-o-user-select: none;
+user-select: none;
+}
+
+div[data-toggle="buttons"] label:hover {
+color: #7AA3CC;
+color:rgba(0,102,153,1);
+}
+
+div[data-toggle="buttons"] label:active, div[data-toggle="buttons"] label.active {
+-webkit-box-shadow: none;
+box-shadow: none;
+}
+.svg-pie {  margin:10px;}
+.container { margin:20px auto; max-width:780px;}
+
+
+
+#demo-5 {
+  box-shadow: none;
+  background: rgba(0,0,0,0.4) ;
+}
+#demo-5 circle:nth-child(1) {
+  fill: rgba(0,0,0,0.4);
+}
+#demo-5 circle:nth-child(2) {
+	fill: rgba(0,0,0,0.4);
+  stroke: #FFF;
+}
+#demo-5 .percentage {
+  color: rgba(255,255,255,1);
+}
+#er
+	{
+		background-color:rgba(0,0,0,0.5);
+		border-radius:5px;
+		border:2px solid #000000;
+	font-family:'Comic Sans MS', cursive;
+		font-size:14px;
+		
+	}
+	#wt
+	{
+		border:2px solid #000000;
+		height:25px;
+	}
+	#up
+	{
+		position:relative;
+		margin-bottom:100px;
+	}
+	#ab
+	{
+		background-color:rgba(0,0,0,0.5);
+		border-radius:5px;
+		border:2px solid #000000;
+		font-family:'Comic Sans MS', cursive;
+		font-size:18px;
+	}
+	#fl
+	{
+		font-size:20px;
+	}
+	</style>
+<script type="text/javascript">
+var q=0;
+var w=0;
+var c=$("#er").clone();
+$(document).ready(function(e) {
+    //Loading Questions
+    $.get('/questions', function(data, status){
+        console.log(data);
+        questions = data;
+    });
+    //Loading Options
+    $.get('/options', function(data, status){
+        console.log(data);
+        options = data;
+    });
+
+	$("#pro").css('font-size','1.5em');
+	$("#btnResult").css("visibility","hidden");
+	var n=$("#er").remove();
+	var n1=$("#er1").remove();
+	var r1=$("#13").remove();
+	var r2=$("#14").remove();
+	var r3=$("#15").remove();
+	var r4=$("#16").remove();
+	
+	
+	$("#l1").remove();
+		$("#l2").remove();
+    $('#btnNext').click(function(){
+		$("html,body").animate({scrollTop:0},500);
+		w=w+1;
+		if(w==1)
+		{
+			$("#ab").remove();
+		}
+		if(i>=1)
+		{
+		if(q<=95)
+		{
+		q=q+5;
+		$('#pro').css("width",q+"%");
+		$('#pro').text(q+"%");
+		}
+		}
+		if(w==20)
+		{
+				$("#btnResult").css("visibility","visible");
+		}
+		});
+		$('#btnPrev').click(function(){
+			$("html,body").animate({scrollTop:0},500);
+			w=w-1;
+		if(q>0)
+		{
+		q=q-5;
+		$('#pro').css("width",q+"%");
+		$('#pro').text(q+"%");
+		}
+		});
+		$('#btnResult').click(function(){
+			$("html,body").animate({scrollTop:0},500);
+			$("#rt").remove();
+		$("#t").remove();
+		$("#ab").remove();
+		$("#aq").remove();
+		$("#wt").remove();
+		$("#az").remove();
+		$("#Az").remove();
+		$("#up").remove();
+		$("#l1").remove();
+		$("#l2").remove();
+		$("#btnResult").remove();
+		$("#btnNext").remove();
+		$("#btnPrev").remove();
+			var sum = 0;
+				for(var i=0; i<questions.length; i++){
+					sum += questions[i].userAnswer;
+					console.log(i+" : " + questions[i].userAnswer);
+				}
+				
+				
+		
+		$('body').append(n);
+		
+	
+		$('#demo-5').svgPie({ percentage: sum });
+		if(sum<=20)
+		{
+			$("#shw").remove();
+			$("#shw1").remove();
+			$("#shw2").remove();
+			$("#shw3").remove();
+			$("#shw0").css({
+				'color':'#000',
+				'font-size':'24px',
+				'font-family':'"Comic Sans MS", cursive'
+				
+			});
+			$("#demo-5 circle:nth-child(2)").css("stroke","#000");
+			
+		}
+		if(sum>20 && sum<=40)
+		{
+			$("#shw0").remove();
+			$("#shw1").remove();
+			$("#shw2").remove();
+			$("#shw3").remove();
+			$("#shw").css({
+				'color':'rgba(70,228,24,1)',
+				'font-size':'24px',
+				'font-family':'"Comic Sans MS", cursive'
+			});
+			$("#demo-5 circle:nth-child(2)").css("stroke","rgba(70,228,24,1)");
+			$('body').append(r1);
+			$('body').append(n1);
+			
+		}
+		if(sum>40 && sum<=60)
+		{
+			$("#shw").remove();
+			$("#shw0").remove();
+			$("#shw2").remove();
+			$("#shw3").remove();
+			$("#shw1").css({
+				'color':'rgba(190,186,12,1)',
+				'font-size':'24px',
+				'font-family':'"Comic Sans MS", cursive'
+			});
+			$("#demo-5 circle:nth-child(2)").css("stroke","rgba(190,186,12,1)");
+			$('body').append(r2);
+			$('body').append(n1);
+		}
+		if(sum>60 && sum<=80)
+		{
+			$("#shw0").remove();
+			$("#shw").remove();
+			$("#shw1").remove();
+			$("#shw3").remove();
+			$("#shw2").css({
+				'color':'rgba(214,107,1,1)',
+				'font-size':'24px',
+				'font-family':'"Comic Sans MS", cursive'
+					
+			});
+			$("#demo-5 circle:nth-child(2)").css("stroke","rgba(214,107,1,1)");
+			$('body').append(r3);
+			$('body').append(n1);
+		}
+		if(sum>80 && sum<=100)
+		{
+			$("#shw0").remove();
+			$("#shw").remove();
+			$("#shw1").remove();
+			$("#shw2").remove();
+			$("#shw3").css({
+				'color':'rgba(204,5,0,1)',
+				'font-size':'24px',
+				'font-family':'"Comic Sans MS", cursive'
+			});
+			$("#demo-5 circle:nth-child(2)").css("stroke","rgba(204,5,0,1)");
+			$('body').append(r4);
+			$('body').append(n1);
+		}
+		});
+		
+		
+});
+</script>
+<script>
+
+$(document).ready(function () {
+	
+});
+</script>
+</head>
+
+<body>
+<div class="container-fluid">
+<div class="row">
+<div  class="row-sm-1">
+	
+	 <div id="header"> <center><a href="#"  style="font-size:40px;color:#FFF;margin-top:20px;font-family:'Comic Sans MS', cursive"><strong>STRESSOMETER</strong></a></center> 
+    
+     </div></div></div></div>
+
+     
+     <div id="rt" class="container">
+<div class="row">
+<div  class="col-sm-12">
+<div id="ab" align="justify"><br />
+Please read each statement and click which indicates how much the statement applied to you over the past six months. There are no right or wrong answers .Do not spend too much time on any statement.<br />
+<br />Mark each statement from 1 to 5, according to how accurate each statement is in describing your lifestyle.
+<p id="fl" style="color:rgba(70,228,24,1)">1 – Never stressed</p>
+<p id="fl" style="color:rgba(0,119,6,1)">2 – Rarely Stressed </p>
+<p id="fl" style="color:rgba(190,186,12,1)">3 – Sometimes Stressed</p>
+<p id="fl" style="color:rgba(214,107,1,1)">4 – Frequently Stressed</p>
+<p id="fl" style="color:rgba(204,5,0,1)">5 – Always Stressed</p>  
+
+</div><br />
+<div id="t" align="center" >
+<p id="ques" style="font-size:24px";>When you couldn't pass any examination ?</p>
+<hr   width="100%" />
+  <div class="btn-group btn-group-vertical" data-toggle="buttons">
+
+      <!-- Loading Options -->
+      {% for option in options %}
+        <label class="btn">
+          <input type="radio"
+                 id="{{ option.weightage }}_radio"
+                 value="{{option.weightage}}"
+                 name='radio_yes_no' >
+            <i class="fa fa-circle-o fa-2x"></i>
+            <i class="fa fa-check-circle-o fa-2x"> </i>
+            <span>{{option.option}}</span>
+        </label>
+      {% endfor %}
+
+      </div>
+      
+        <h1 id="hd_yescount"></h1>
+		<h6 id="hd_nocount"></h6>
+       
+</div>
+<div>
+
+</div>
+</div></div></div>
+
+<div id="aq" class="container"> 
+  <div id="wt" class="progress">
+    <div id="pro" class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:2%;background-color:rgba(0,102,153,1);color:rgba(0,0,0,1)">
+     2%
+    </div>
+  </div>
+</div>
+<div id="az" class="container">
+  <div id="Az" class="col">
+<div  class="col-xs-4">
+ <button type="button" id="btnPrev" class="btn btn-sm btn-danger" style="background-color:06f;font-size:18px;font-family:Forte;float:left" onclick=previous() >BACK</button></div> 
+   <center> <div  class="col-xs-4">  <button type="button" id="btnResult" class="btn btn-sm btn-danger" style="background-color:06f;font-size:18px;font-family:Forte;margin-right:40px" onclick=getResult() >RESULT</button></div>
+     </center>
+    <div  class="col-sm-4"> <button type="button" id="btnNext" class="btn btn-sm btn-danger" style="font-size:18px; font-family:Forte;float:right" onclick=next()>NEXT</button></div></div></div>
+
+
+<br /><br />
+<div id="l2"  class="container">
+  <div id="up"  class="row">
+<div  class="row-sm-1" id="er" align="center">
+LEVEL OF YOUR STRESS <br />
+<div id="demo-5" class="svg-pie"></div>
+<p id="shw0">MINIMUM</p>
+<p id="shw">NORMAL<br />Need to be Maintained</p>
+<p id="shw1">PROFOUND<br />Need for Counseling</p>
+<p id="shw2">SEVERE<br />Need For Professional Counseling</p>
+<p id="shw3">VERY SEVERE<br />Need For Professional Counseling as well as clinical help</p>
+</div></div></div>
+
+<div id="13" class="container">
+  <div class="col">
+<div  class="col-sm-12" id="d1" align="center" >
+<ul class="nav nav-pills nav-stacked" >
+<li class="dropdown" >
+<a class="dropdown-toggle" data-toggle="dropdown" href="#"><p style="font-size:24px;color:rgba(255,255,255,1);background:rgba(0,0,0,0.6);font-weight:bold;border-radius:5px;" >READ MORE <span class="caret"></span></p></a>
+<ul class="dropdown-menu">
+<li><a href="#" style="font-size:15px;font-weight:bolder;">Suggestions:-<br /></a>
+<p style="font-size:20px;color:rgba(0,0,255,1)">
+&nbsp;&nbsp;&nbsp; Reach out and build relationships--</p>
+<ul style="font-size:15px;color:rgba(0,0,0,1)">
+•   Reach out to a colleague at work<br />
+•	Help someone else by volunteering<br />
+•	Have lunch or coffee with a friend<br />
+•	Ask a loved one to check in with you regularly<br />
+•	Accompany someone to the movies or a concert<br />
+•	Call or email an old friend<br />
+•	Go for a walk with a workout buddy<br />
+•	Schedule a weekly dinner date<br />
+•	Meet new people by taking a class or joining a club<br />
+•	Confide in a clergy member, teacher, or sports coach<br />
+</ul>
+<br />
+<p style="font-size:20px;color:rgba(0,0,255,1);">
+&nbsp;&nbsp;&nbsp; Stress Management:A Wellness Lifestyle Approach</p>
+<p style="font-size:15px;color:rgba(0,0,0,1);margin-left:20px;margin-right:20px;" align="justify">
+  Stress is a part of life, but the healthier you are, the better able you are to manage stress when it happens. Chronic stress can impact your immune system, which lowers your resistance to getting sick. Approaching stress management from a wellness lifestyle approach can give you "money in the bank" when it comes to preventing stress, and can give you the energy you need to handle stress when it happens. The following components are part of a wellness lifestyle approach.</p>
+<p style="color:rgba(0,102,0,1);font-size:20px;">
+&nbsp;&nbsp;&nbsp; ATTITUDE</p>
+<p style="font-size:15px;color:rgba(0,0,0,1);margin-left:20px;margin-right:20px;" align="justify">   "Attitude is everything." What does that mean? The way you think about things can make all the difference in how you react to events. In this section, we explore how you can change the way you think in order to reduce stress.</p>
+<p style="color:rgba(0,102,0,1);font-size:20px;">
+&nbsp;&nbsp;&nbsp; HEALTY EATING</p>
+<p style="font-size:15px;color:rgba(0,0,0,1);margin-left:20px;margin-right:20px;" align="justify">  Good nutrition and healthy eating habits can help you through your stressful times now, not just prevent a heart attack 30 years down the road. Eating well will increase your physical, mental, and emotional stamina. Fueling yourself with nutrient dense foods can boost your immune system, help you maintain a healthy weight and help you feel better about yourself. Check out the Healthy Eating section for a quick diet assessment and ideas on how to fuel yourself better.</p>
+<p style="color:rgba(0,102,0,1);font-size:20px;">
+&nbsp;&nbsp;&nbsp; PHYSICAL ACTIVITY:</p>
+<p style="font-size:15px;color:rgba(0,0,0,1);margin-left:20px;margin-right:20px;" align="justify">   Physical activity provides immediate stress relief as well as long-term stress management. Just 20-30 minutes of walking a day, for example, can give you more energy, help you put things in perspective, improve your sleep, sharpen your mental productivity, and boost your self-confidence. Our bodies are made to move and everyone can find some type of activity that is Enjoyable</p>
+<p style="color:rgba(0,102,0,1);font-size:20px;">
+&nbsp;&nbsp;&nbsp; RELAXING YOUR MIND AND BODY:</p>
+<p style="font-size:15px;color:rgba(0,0,0,1);margin-left:20px;margin-right:20px;" align="justify">  There are a number of relaxation techniques that can help you manage stress and also improve your concentration, productivity and overall well-being.</p>
+<p style="color:rgba(0,102,0,1);font-size:20px;">
+&nbsp;&nbsp;&nbsp; ALCOHOL AND OTHER DRUGS:</p>
+<p style="font-size:15px;color:rgba(0,0,0,1);margin-left:20px;margin-right:20px;" align="justify">   Alcohol and other drug use can lead to many problems that can add stress to our lives. High-risk use can lead to poor decision-making, impaired abstract thinking, injury and legal problems. By understanding your overall risks, you can make healthier choices.</p>
+<p style="color:rgba(0,102,0,1);font-size:20px;">
+&nbsp;&nbsp;&nbsp; TOBACCO:</p>
+<p style="font-size:15px;color:rgba(0,0,0,1);margin-left:20px;margin-right:20px;" align="justify">
+Tobacco can impact your sleep, ability to fight infection and overall health. These issues can create stressful situations. Tobacco use by some, however, is seen as a stress reducer. In order to achieve a healthy lifestyle, it is important to learn strategies to deal with stressors and to understand that quitting tobacco use takes time and practice.</p>
+<p style="color:rgba(0,102,0,1);font-size:20px;">
+&nbsp;&nbsp;&nbsp; SPRITUALITY:</p>
+<p style="font-size:15px;color:rgba(0,0,0,1);margin-left:20px;margin-right:20px;" align="justify"> Spirituality means finding personal meaning in your life; it doesn't mean just following a particular religious dogma. This section describes how exploring spirituality may be helpful in managing stress.</p></li>
+<p style="color:rgba(0,102,0,1);font-size:20px;">
+&nbsp;&nbsp;&nbsp; FOR EXTRA BLOG PRESS BUTTON:</p>
+ <a href="http://www.aapb.org/i4a/pages/index.cfm?pageID=3361"><div  class="col-sm-12"> <button type="button"  class="btn btn-lg btn-danger"  style="font-size:18px;font-family:Verdana, Geneva, sans-serif;margin-right:30px" >Blog Reading</button></div></a><p>d</p>
+ <p style="color:rgba(0,102,0,1);font-size:20px;">
+&nbsp;&nbsp;&nbsp; WATCH YOUTUBE VIDEO:</p>
+<a href="https://www.youtube.com/watch?v=kKPh-eZDoTU"><div  class="col-sm-12"> <button type="button"  class="btn btn-lg btn-danger"  style="font-size:18px;font-family:Verdana, Geneva, sans-serif;margin-right:30px" >VIDEO LINK</button></div></a></p><p>d</p>
+<p style="color:rgba(0,102,0,1);font-size:20px;">
+&nbsp;&nbsp;&nbsp; TIME TABLE:
+<a href="{% static 'StressApp/img/timetable.png' %}"><div  class="col-sm-12"> <button type="button"  class="btn btn-lg btn-danger"  style="font-size:18px;font-family:Verdana, Geneva, sans-serif;margin-right:30px" >Download&nbsp;<span class="glyphicon glyphicon-download"></span></button></div></a><p>d</p>
+</ul></li></ul>
+</div></div></div>
+
+<div id="14" class="container">
+  <div class="col">
+<div  class="col-sm-12" id="d1" align="center" >
+<ul class="nav nav-pills nav-stacked" >
+<li class="dropdown" >
+<a class="dropdown-toggle" data-toggle="dropdown" href="#"><p style="font-size:24px;color:rgba(255,255,255,1);background:rgba(0,0,0,0.6);font-weight:bolder;border-radius:5px;">READ MORE <span class="caret"></span></p></a>
+<ul class="dropdown-menu">
+<li><a href="#" style="font-size:15px;font-weight:bolder;">Suggestions:-<br /></a>
+<p style="font-size:20px;color:rgba(0,0,255,1)">
+&nbsp;&nbsp;&nbsp;Develop a "stress relief toolbox"--</p>
+<p style="font-size:15px;color:rgba(0,0,0,1);margin-left:20px;margin-right:20px;" align="justify"> Come up with a list of healthy ways to relax and recharge. <br />Try to implement one or more of these ideas each day, even if you're feeling good.</p>
+<ul style="font-size:15px;color:rgba(0,0,0,1)">
+•  	Go for a walk<br />
+•	Spend time in nature<br />
+•	Call a good friend<br />
+•	Play a competitive game of tennis or racquetball<br />
+•	Write in your journal<br />
+•	Take a long bath<br />
+•	Light scented candles<br />
+
+</ul>
+
+</li>
+<p style="font-size:15px;color:rgba(0,0,0,1);margin-left:20px;margin-right:20px;">Go to any of your elder siblings or parents for tentative talks and share your problems with them stop worrying too much a proper check list can help you as well.</p>
+<p style="color:rgba(0,102,0,1);font-size:20px;">
+&nbsp;&nbsp;&nbsp; FOR EXTRA BLOG PRESS BUTTON:</p>
+ <a href="http://www.aapb.org/i4a/pages/index.cfm?pageID=3361"><div  class="col-sm-12"> <button type="button"  class="btn btn-lg btn-danger"  style="font-size:18px;font-family:Verdana, Geneva, sans-serif;margin-right:30px" >Blog Reading</button></div></a><p>d</p>
+ <p style="color:rgba(0,102,0,1);font-size:20px;">
+&nbsp;&nbsp;&nbsp; WATCH YOUTUBE VIDEO:</p>
+<a href="https://www.youtube.com/watch?v=kKPh-eZDoTU"><div  class="col-sm-12"> <button type="button"  class="btn btn-lg btn-danger"  style="font-size:18px;font-family:Verdana, Geneva, sans-serif;margin-right:30px" >VIDEO LINK</button></div></a>
+<p>d</p>
+<p style="color:rgba(0,102,0,1);font-size:20px;">
+&nbsp;&nbsp;&nbsp; TIME TABLE:
+<a href="{% static 'StressApp/img/timetable.png' %}"><div  class="col-sm-12"> <button type="button"  class="btn btn-lg btn-danger"  style="font-size:18px;font-family:Verdana, Geneva, sans-serif;margin-right:30px" >Download&nbsp;<span class="glyphicon glyphicon-download"></span></button></div></a><p>d</p>
+</ul></li></ul>
+</div></div></div>
+
+<div id="15" class="container">
+  <div class="col">
+<div  class="col-sm-12" id="d1" align="center" >
+<ul class="nav nav-pills nav-stacked" >
+<li class="dropdown" >
+<a class="dropdown-toggle" data-toggle="dropdown" href="#"><p style="font-size:24px;color:rgba(255,255,255,1);background:rgba(0,0,0,0.6);font-weight:bolder;border-radius:5px;">READ MORE <span class="caret"></span></p></a>
+<ul class="dropdown-menu">
+<li><a href="#" style="font-size:15px;font-weight:bolder;">Suggestions:-<br /></a>
+<p style="font-size:20px;color:rgba(0,0,255,1);">
+&nbsp;&nbsp;&nbsp; COUNSELLING--</p>
+<p style="font-size:15px;color:rgba(0,0,0,1);margin-left:20px;margin-right:20px;" align="justify">One recommendation commonly offered by doctors is counselling and psychotherapy. Talking with a professional about the difficulties you're experiencing can help you understand any underlying issues that may be causing your stress - for example, low self-esteem. Working with your counsellor you will then be able to identify your personal stress triggers and discuss ways of coping with them.</p>
+<p style="font-size:20px;color:rgba(0,0,255,1)">
+&nbsp;&nbsp;&nbsp; MINDFULNESS--</p>
+<div align="center"><p style="font-size:15px;color:rgba(0,0,0,1);margin-left:20px;margin-right:20px;" align="justify"> One form of therapy that has been recommended for those struggling with stress is mindfulness. This approach comes from a Buddhist meditation technique and focuses on paying attention to the present moment rather than worrying about past or future events. Whilst focusing on the present moment you are encouraged to notice how your body is feeling and what thoughts come and go, without judgement.
+From the theories of mindfulness more specific therapies have been devised - mindfulness-based stress reduction (MBSR) and mindfulness-based cognitive therapy (MBCT). MBSR aims to help lower stress levels through meditation techniques and moment-to-moment awareness. MBCT uses similar techniques, however it also looks to identify negative thought processes that can contribute to conditions such as anxiety and depression (the National Institute of Health and Care Excellence recommend MBCT for those with recurrent depression).
+</p></div></li>
+<p style="color:rgba(0,102,0,1);font-size:20px;">
+&nbsp;&nbsp;&nbsp; FOR EXTRA BLOG PRESS BUTTON:</p>
+ <a href="http://www.aapb.org/i4a/pages/index.cfm?pageID=3361"><div  class="col-sm-12"> <button type="button"  class="btn btn-lg btn-danger"  style="font-size:18px;font-family:Verdana, Geneva, sans-serif;margin-right:30px" >Blog Reading</button></div></a>
+ <p>d</p>
+ <p style="color:rgba(0,102,0,1);font-size:20px;">
+&nbsp;&nbsp;&nbsp; WATCH YOUTUBE VIDEO:</p>
+<a href="https://www.youtube.com/watch?v=kKPh-eZDoTU"><div  class="col-sm-12"> <button type="button"  class="btn btn-lg btn-danger"  style="font-size:18px;font-family:Verdana, Geneva, sans-serif;margin-right:30px" >VIDEO LINK</button></div></a>
+<p>d</p>
+<p style="color:rgba(0,102,0,1);font-size:20px;">
+&nbsp;&nbsp;&nbsp; TIME TABLE:
+<a href="{% static 'StressApp/img/timetable.png' %}"><div  class="col-sm-12"> <button type="button"  class="btn btn-lg btn-danger"  style="font-size:18px;font-family:Verdana, Geneva, sans-serif;margin-right:30px" >Download&nbsp;<span class="glyphicon glyphicon-download"></span></button></div></a><p>d</p>
+</ul></li></ul>
+</div></div></div>
+
+<div id="16" class="container">
+  <div class="col">
+<div  class="col-sm-12" id="d1" align="center" >
+<ul class="nav nav-pills nav-stacked" >
+<li class="dropdown" >
+<a class="dropdown-toggle" data-toggle="dropdown" href="#"><p style="font-size:24px;color:rgba(255,255,255,1);background:rgba(0,0,0,0.6);font-weight:bolder;border-radius:5px;">READ MORE <span class="caret"></span></p></a>
+<ul class="dropdown-menu">
+<li><a href="#" style="font-size:15px;font-weight:bolder;">Suggestions:-<br /></a>
+<p style="font-size:20px;color:rgba(0,0,255,1);font-weight:bolder;">
+&nbsp;&nbsp;&nbsp; Interview with an Expert--</p>
+<p style="font-size:17px;color:rgba(0,0,255,1);;margin-left:20px;margin-right:20px;">
+ Everyone deals with some level of stress from time to time. What signs make it clear that time to get help?</p>
+<p style="font-size:15px;color:rgba(0,0,0,1);margin-left:20px;margin-right:20px;" align="justify">Feeling stress and anxiety is normal but they can manifest in different ways for each individual. For some people, it’s time to seek help when your feelings begin to have a negative impact on everyday life and your ability to carry out daily routines or have normal relationships. For others, it is when these thoughts and feelings begin to prevent them from being able to focus and enjoy the important things in life, when their stress and anxiety are the only thing they can focus on, or when their thoughts and feelings begin to interfere with work or school. It can be any one or combination that sparks the need to get help.</p>
+<p style="font-size:17px;color:rgba(0,0,255,1);margin-left:20px;margin-right:20px;">
+How can someone spot the differences between stress and anxiety? What are those differences?</p>
+<p style="font-size:15px;color:rgba(0,0,0,1);margin-left:20px;margin-right:20px;" align="justify">Stress and anxiety can share some of the same primary physical symptoms, such as, pounding hearts, rapid breathing, dilated pupils and muscle tension. The symptoms vary but can overlap and some people are more susceptible to them than others. Some people stress when making ordinary daily decisions, such as, where to go, what to eat and what to buy and other people thrive and can be highly productive when driven by these forces of pressure.
+The words are mostly used interchangeably but they are different experiences and you can have one without the other. Stressful feelings include frustration and nervousness and anxious feelings include fear, unease and worry. The key difference is that stress is a reaction to something that is happening now and is triggered by a specific situation. Anxiety is concern about something that may or may not happen in the future. Anxiety is also the stress that continues after the stressor is gone.
+</p></li>
+<p style="color:rgba(0,102,0,1);font-size:20px;">
+&nbsp;&nbsp;&nbsp; FOR EXTRA BLOG PRESS BUTTON:</p>
+ <a href="http://www.aapb.org/i4a/pages/index.cfm?pageID=3361"><div  class="col-sm-12"> <button type="button"  class="btn btn-lg btn-danger"  style="font-size:18px;font-family:Verdana, Geneva, sans-serif;margin-right:30px" >Blog Reading</button></div></a>
+ <p>d</p>
+ <p style="color:rgba(0,102,0,1);font-size:20px;">
+&nbsp;&nbsp;&nbsp; WATCH YOUTUBE VIDEO:</p>
+<a href="https://www.youtube.com/watch?v=kKPh-eZDoTU"><div  class="col-sm-12"> <button type="button"  class="btn btn-lg btn-danger"  style="font-size:18px;font-family:Verdana, Geneva, sans-serif;margin-right:30px" >VIDEO LINK</button></div></a>
+<p>d</p>
+<p style="color:rgba(0,102,0,1);font-size:20px;">
+&nbsp;&nbsp;&nbsp; TIME TABLE:
+<a href="{% static 'StressApp/img/timetable.png' %}"><div  class="col-sm-12"> <button type="button"  class="btn btn-lg btn-danger"  style="font-size:18px;font-family:Verdana, Geneva, sans-serif;margin-right:30px" >Download&nbsp;<span class="glyphicon glyphicon-download"></span></button></div></a><p>d</p>
+</ul></li></ul>
+</div></div></div>
+
+<!--give the copyrights to :-
+http://www.helpguide.org/articles/stress/stress-management.htm
+https://www.uhs.uga.edu/stress/wellnesslifestyle.html
+www.counselling-directory.org.uk/stress.html
+http://www.learnpsychology.org/student-stress-anxiety-guide/-->
+
+
+
+<div id="l1" class="container">
+  <div class="col">
+<div  class="col-sm-12" id="er1" align="center" style="font-size:20px">
+THANK YOU   <br /><br />
+<a href="/"><input type="button" id="b" class="btn " value="START TEST"></input></a><br /><br />
+</div></div></div>
+
+</body>
+</html>
